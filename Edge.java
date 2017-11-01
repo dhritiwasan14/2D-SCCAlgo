@@ -4,8 +4,8 @@ public class Edge {
     private Literal to;
 
     public Edge(Literal from, Literal to) {
-        this.from = new Literal(from.var);
-        this.to = new Literal(to.var);
+        this.from = from;
+        this.to = to;
     }
 
     public Literal to() {

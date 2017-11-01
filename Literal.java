@@ -2,6 +2,7 @@ public class Literal{
     Integer var;
     int start;
     int end;
+    boolean value;
     public Literal(Integer var) {
         this.var = var;
     }
@@ -20,5 +21,14 @@ public class Literal{
     }
     public void setEnd(int end) {
         this.end = end;
+    }
+    public int getVar() {
+        return var;
+    }
+    public void setValue(boolean value) {
+        this.value = value;
+    }
+    public boolean getValue() {
+        return value;
     }
 }

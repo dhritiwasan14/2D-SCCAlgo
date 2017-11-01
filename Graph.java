@@ -1,5 +1,5 @@
-
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Graph {
 
@@ -22,7 +22,6 @@ public class Graph {
     }
 
     public void addEdge(Literal edge1, Literal edge2) {
-
         addVertice(edge1);
         addVertice(edge2);
         if (connectedTo.containsKey(edge1)) {
@@ -41,7 +40,7 @@ public class Graph {
         addEdge(e.getFrom(), e.getTo());
     }
 
-    public ArrayList<ArrayList<Literal>> getStrongConnected() {
+    public ArrayList<List<Literal>> getStrongConnected() {
         Stack<Literal> stack = new Stack<>();
         HashSet<Literal> startTime = new HashSet<>();
         stackBuilder(startTime, vertices.get(0), stack);
@@ -51,20 +50,24 @@ public class Graph {
                 notVisited.add(e);
             }
         }
-        System.out.println("not visited"+notVisited.size());
         for (Literal e: notVisited) {
             if (!startTime.contains(e)) {
                 stackBuilder(startTime, e, stack);
             }
         }
-        System.out.println(startTime.size());
+        System.out.println("Not Visited "+notVisited);
+        System.out.println("Before reversing "+System.currentTimeMillis());
         Graph transpose = getTranspose();
+        System.out.println("After reversing "+System.currentTimeMillis());
         Stack<Literal> visited = new Stack<>();
-        ArrayList<ArrayList<Literal>> scc = new ArrayList<>();
+        ArrayList<List<Literal>> scc = new ArrayList<>();
         while (!stack.empty()) {
             Literal c = stack.pop();
-            if (!visited.contains(c))
-            scc.add(dfsFinder(transpose, transpose.getEquivalent(c), visited));
+            if (!visited.contains(c)) {
+                System.out.println("DFS "+System.currentTimeMillis());
+                scc.add(dfsFinder(transpose, transpose.getEquivalent(c), visited));
+                System.out.println("DFS "+System.currentTimeMillis());
+            }
 
         }
         return scc;
@@ -77,13 +80,15 @@ public class Graph {
         }
         return toReturn;
     }
-    public ArrayList<Literal> dfsFinder(Graph g, Literal node, Stack<Literal> visit) {
-        ArrayList<Literal> toReturn = new ArrayList<>();
-        DFSIterator iterator = new DFSIterator(node, g);
+    public List<Literal> dfsFinder(Graph g, Literal node, Stack<Literal> visit) {
+        List<Literal> toReturn = new ArrayList<>();
+        DFSIterator iterator;
+        if (!visit.contains(node))
+            iterator = new DFSIterator(node, g);
+        else
+            return toReturn;
         while (iterator.hasNext()) {
             Literal e = iterator.next();
-            System.out.println("node "+node.var+" neighbour "+e.var);
-
             if (!visit.contains(e)) {
                 toReturn.add(e);
                 visit.add(e);
@@ -96,8 +101,9 @@ public class Graph {
         visited.add(node);
         for (Literal e: neighbours) {
             if (visited.contains(e));
-            else
-            stackBuilder(visited, e, stack);
+            else {
+                stackBuilder(visited, e, stack);
+            }
         }
         stack.push(node);
     }
