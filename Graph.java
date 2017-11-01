@@ -55,18 +55,13 @@ public class Graph {
                 stackBuilder(startTime, e, stack);
             }
         }
-        System.out.println("Not Visited "+notVisited);
-        System.out.println("Before reversing "+System.currentTimeMillis());
         Graph transpose = getTranspose();
-        System.out.println("After reversing "+System.currentTimeMillis());
-        Stack<Literal> visited = new Stack<>();
+        HashSet<Literal> visited = new HashSet<>();
         ArrayList<List<Literal>> scc = new ArrayList<>();
         while (!stack.empty()) {
             Literal c = stack.pop();
             if (!visited.contains(c)) {
-                System.out.println("DFS "+System.currentTimeMillis());
                 scc.add(dfsFinder(transpose, transpose.getEquivalent(c), visited));
-                System.out.println("DFS "+System.currentTimeMillis());
             }
 
         }
@@ -80,27 +75,27 @@ public class Graph {
         }
         return toReturn;
     }
-    public List<Literal> dfsFinder(Graph g, Literal node, Stack<Literal> visit) {
+    public List<Literal> dfsFinder(Graph g, Literal node, HashSet<Literal> visit) {
         List<Literal> toReturn = new ArrayList<>();
-        DFSIterator iterator;
-        if (!visit.contains(node))
-            iterator = new DFSIterator(node, g);
-        else
-            return toReturn;
+        DFSIterator iterator = new DFSIterator(node, g);
         while (iterator.hasNext()) {
             Literal e = iterator.next();
             if (!visit.contains(e)) {
                 toReturn.add(e);
                 visit.add(e);
+            } else {
+                break;
             }
         }
-        return toReturn;
+        return toReturn.stream().sorted(Comparator.comparing(Literal::getVar)).collect(Collectors.toList());
     }
     public void stackBuilder(HashSet<Literal> visited, Literal node, Stack<Literal> stack) {
         ArrayList<Literal> neighbours = dfsFinder(this, node);
         visited.add(node);
         for (Literal e: neighbours) {
-            if (visited.contains(e));
+            if (visited.contains(e)) {
+
+            }
             else {
                 stackBuilder(visited, e, stack);
             }
@@ -154,7 +149,6 @@ public class Graph {
                         }
                     }
                 } return next;
-
             }
             throw new NoSuchElementException();
         }
@@ -162,7 +156,4 @@ public class Graph {
     public List<Literal> getNeighbours(Literal next) {
         return connectedTo.get(next);
     }
-
-
-
 }

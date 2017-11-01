@@ -3,6 +3,9 @@ public class Literal{
     int start;
     int end;
     boolean value;
+    public Literal() {
+
+    }
     public Literal(Integer var) {
         this.var = var;
     }
