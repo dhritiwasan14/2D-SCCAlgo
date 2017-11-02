@@ -8,15 +8,7 @@ public class SATSolver {
     public SATSolver() {
         implicationgraph = new Graph();
     }
-    public void addLiterals(int[][] arr) {
-        for (int i = 0; i< arr.length; i++) {
-            Literal one = new Literal(arr[i][0]);
-            Literal two = new Literal(arr[i][1]);
-            implicationgraph.addEdge(one, two);
-        }
-    }
     public void addLiterals(Literal one, Literal two) {
-
         implicationgraph.addEdge(one, two);
     }
     public ArrayList<List<Literal>> findStrongConected() {
