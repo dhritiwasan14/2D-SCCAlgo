@@ -12,4 +12,10 @@ public class Clause {
     public boolean solve() {
         return value1 || value2;
     }
+    public void setValue1(boolean value) {
+        value1 = value;
+    }
+    public void setValue2(boolean value) {
+        value2 = value;
+    }
 }

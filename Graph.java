@@ -55,8 +55,7 @@ public class Graph {
                 stackBuilder(startTime, e, stack);
             }
         }
-        System.out.println(notVisited.size());
-        System.out.println(stack.size());
+
         Graph transpose = getTranspose();
         HashSet<Literal> visited = new HashSet<>();
         ArrayList<List<Literal>> scc = new ArrayList<>();
@@ -65,7 +64,6 @@ public class Graph {
             if (!visited.contains(c)) {
                 scc.add(dfsFinder(transpose, transpose.getEquivalent(c), visited));
             }
-
         }
         return scc;
 
@@ -94,7 +92,7 @@ public class Graph {
                 toReturn.add(e);
                 visit.add(e);
             } else {
-                break;
+                return toReturn.stream().sorted(Comparator.comparing(Literal::getVar)).collect(Collectors.toList());
             }
         }
         return toReturn.stream().sorted(Comparator.comparing(Literal::getVar)).collect(Collectors.toList());

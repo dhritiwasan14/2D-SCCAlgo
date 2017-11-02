@@ -2,17 +2,19 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Main {
 
     public static void main(String[] args) {
         long starttime = System.currentTimeMillis();
         ArrayList<ArrayList<Literal>> output = new ArrayList<>();
+        LinkedList<Clause> myClauses = new LinkedList<>();
         SATSolver solver = new SATSolver();
+        HashMap<Literal, Boolean> myLiterals = new HashMap<>();
         int[][] arr = {{4, 4}, {-4, -4}};
-        try (BufferedReader br = new BufferedReader(new FileReader(System.getProperty("user.dir") + "/largeUnsat.cnf"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(System.getProperty("user.dir") + "/s8Sat.cnf"))) {
             String line;
             while ((line = br.readLine()) != null) {
                 if (!line.isEmpty() && !(line.substring(0,1).equals("p")) && !(line.substring(0,1).equals("c"))) {
@@ -36,33 +38,55 @@ public class Main {
                             try {
                                 solver.addLiterals(arraylist.get(0), arraylist.get(2));
                                 solver.addLiterals(arraylist.get(1), arraylist.get(3));
+                                myClauses.add(new Clause(arraylist.get(1), arraylist.get(2)));
                             } catch (Exception e) {
                                 solver.addLiterals(arraylist.get(0), arraylist.get(1));
                                 solver.addLiterals(arraylist.get(1), arraylist.get(0));
+                                myClauses.add(new Clause(arraylist.get(1), arraylist.get(1)));
                             }
                         }
                     }
                 }
             }
-            System.out.println(System.currentTimeMillis());
             ArrayList<List<Literal>> scc = solver.findStrongConected();
             if (solver.checkForUnsatisfiability(scc)) {
                 System.out.println("FORMULA UNSATISFIABLE");
             } else {
                 int length = scc.size();
-                System.out.println(scc);
-                String binStr = "";
-                for (int i = 0; i < length; i++) {
+                String binStr;
+                String toPrint = "";
+                binStr = Integer.toBinaryString(length*2);
+                while (binStr.length() == Integer.toBinaryString((2*length)+1).length()) {
+                    length++;
+                }
+                for (int i =length*2-1; i >= 0;i--) {
                     binStr = Integer.toBinaryString(i);
                     for (int j = 0; j < binStr.length(); j++) {
                         boolean value = 49 - (int) binStr.charAt(j) == 0;
-                        for (int k = 0; k < scc.get(i).size(); k++) {
-                            Literal temp = scc.get(i).get(k);
+                        for (int k = 0; k < scc.get(j).size(); k++) {
+
+                            Literal temp = scc.get(j).get(k);
                             temp.value = value;
+                            myLiterals.put(temp, value);
                         }
                     }
-                }
 
+                    int numberClause = myClauses.size();
+                    int count = 0;
+                    for (Clause clause : myClauses) {
+                        clause.setValue1(myLiterals.get(clause.node1));
+                        clause.setValue2(myLiterals.get(clause.node2));
+                        if (clause.solve()) count++;
+                    }
+                    if (count == numberClause) {
+                        List<Literal> keys = myLiterals.keySet().stream().filter(o -> o.var > 0).sorted(Comparator.comparing(Literal::getVar)).collect(Collectors.toList());
+                        for (Literal key : keys) {
+                            toPrint += (key.value) ? 1 : 0;
+                        }
+                        System.out.println(toPrint);
+                        break;
+                    }
+                }
             }
             System.out.println(System.currentTimeMillis() - starttime);
         }catch (FileNotFoundException e) {
