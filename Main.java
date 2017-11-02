@@ -14,7 +14,7 @@ public class Main {
         SATSolver solver = new SATSolver();
         HashMap<Literal, Boolean> myLiterals = new HashMap<>();
         int[][] arr = {{4, 4}, {-4, -4}};
-        try (BufferedReader br = new BufferedReader(new FileReader(System.getProperty("user.dir") + "/s8Sat.cnf"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(System.getProperty("user.dir") + "/largeUnsat.cnf"))) {
             String line;
             while ((line = br.readLine()) != null) {
                 if (!line.isEmpty() && !(line.substring(0,1).equals("p")) && !(line.substring(0,1).equals("c"))) {
@@ -52,6 +52,7 @@ public class Main {
             if (solver.checkForUnsatisfiability(scc)) {
                 System.out.println("FORMULA UNSATISFIABLE");
             } else {
+                System.out.println("FORMULA SATISFIABLE");
                 int length = scc.size();
                 String binStr;
                 String toPrint = "";
