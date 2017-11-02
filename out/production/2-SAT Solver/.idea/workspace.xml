@@ -1,22 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="32afc83c-5f28-4b7d-a8a1-3e5b4108e715" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/2-SAT Solver/Clause.class" afterPath="$PROJECT_DIR$/out/production/2-SAT Solver/Clause.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/2-SAT Solver/Edge.class" afterPath="$PROJECT_DIR$/out/production/2-SAT Solver/Edge.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/2-SAT Solver/Graph$DFSIterator.class" afterPath="$PROJECT_DIR$/out/production/2-SAT Solver/Graph$DFSIterator.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/2-SAT Solver/Graph.class" afterPath="$PROJECT_DIR$/out/production/2-SAT Solver/Graph.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/2-SAT Solver/Literal.class" afterPath="$PROJECT_DIR$/out/production/2-SAT Solver/Literal.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/2-SAT Solver/Main.class" afterPath="$PROJECT_DIR$/out/production/2-SAT Solver/Main.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/2-SAT Solver/SATSolver.class" afterPath="$PROJECT_DIR$/out/production/2-SAT Solver/SATSolver.class" />
+    <list default="true" id="62dc8057-ce58-4b08-8f1e-9db411405c11" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Clause.java" afterPath="$PROJECT_DIR$/Clause.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Edge.java" afterPath="$PROJECT_DIR$/Edge.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Graph.java" afterPath="$PROJECT_DIR$/Graph.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Literal.java" afterPath="$PROJECT_DIR$/Literal.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Main.java" afterPath="$PROJECT_DIR$/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SATSolver.java" afterPath="$PROJECT_DIR$/SATSolver.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/s8Sat.cnf" afterPath="$PROJECT_DIR$/s8Sat.cnf" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,11 +16,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="Clause.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Clause.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="13" lean-forward="false" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SATSolver.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SATSolver.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+            <state relative-caret-position="187">
+              <caret line="16" column="107" lean-forward="false" selection-start-line="16" selection-start-column="107" selection-end-line="16" selection-end-column="107" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="s8Sat.cnf" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/s8Sat.cnf">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="816">
+              <caret line="48" column="7" lean-forward="false" selection-start-line="48" selection-start-column="7" selection-end-line="48" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -48,8 +66,16 @@
       <projects_view />
     </option>
   </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/s8Sat.cnf" />
+        <option value="$PROJECT_DIR$/Main.java" />
+      </list>
+    </option>
+  </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-2" />
+    <option name="x" value="318" />
     <option name="width" value="652" />
     <option name="height" value="806" />
   </component>
@@ -68,9 +94,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
-      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -83,6 +106,9 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="RunDashboard">
@@ -204,11 +230,11 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="32afc83c-5f28-4b7d-a8a1-3e5b4108e715" name="Default" comment="" />
-      <created>1509520461372</created>
+      <changelist id="62dc8057-ce58-4b08-8f1e-9db411405c11" name="Default" comment="" />
+      <created>1509607878425</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1509520461372</updated>
+      <updated>1509607878425</updated>
     </task>
     <servers />
   </component>
@@ -251,10 +277,34 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Clause.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="13" lean-forward="false" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/s8Sat.cnf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="816">
+          <caret line="48" column="7" lean-forward="false" selection-start-line="48" selection-start-column="7" selection-end-line="48" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SATSolver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        <state relative-caret-position="187">
+          <caret line="16" column="107" lean-forward="false" selection-start-line="16" selection-start-column="107" selection-end-line="16" selection-end-column="107" />
           <folding />
         </state>
       </provider>

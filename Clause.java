@@ -9,6 +9,9 @@ public class Clause {
         this.value1 = false;
         this.value2 = false;
     }
+    public Clause() {
+
+    }
     public boolean solve() {
         return value1 || value2;
     }
